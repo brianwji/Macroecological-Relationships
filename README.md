@@ -1,7 +1,7 @@
 # Macroecological-Relationships
 We have tested this code for MATLAB_R2016a.
 
-## Scripts
+## scripts
 Contains MATLAB scripts to produce all main figures in the manuscript.
 
 ## matData
