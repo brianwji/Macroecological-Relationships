@@ -1,5 +1,7 @@
-%% Alm study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load alm_uclust_25K.mat;
+addpath(genpath('./');
+
+%% David study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+load david.mat;
 c = @cmu.colors;
 
 
@@ -204,7 +206,7 @@ end
 
 
 %% Caparaso study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load caporaso_uclust_17K.mat;
+load caporaso.mat;
 
 
 %% Human M3 %%%%%%%%%%% 
@@ -391,7 +393,7 @@ end
 
 
 %% Carmody study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load mice_uclust_25K.mat;
+load carmody.mat;
 
 
 %% Set up mice data %%%%%%%%%%%%%%%%%%%%% 
@@ -1131,52 +1133,6 @@ box off
 ll3 = legend([p3d,p3b],{'Residence times (t_{res })','Return times (t_{ret })'});
 ll3.FontSize = 12;
 ll3.LineWidth = 1;
-
-
-
-%% Numbers
-
-%A
-alpha_a_A;
-lambda_a_A;
-alpha_p_A;
-lambda_p_A;
-
-%B
-alpha_a_B;
-lambda_a_B;
-alpha_p_B;
-lambda_p_B;
-
-%M3
-alpha_a_m3;
-lambda_a_m3;
-alpha_p_m3;
-lambda_p_m3;
-
-%F4
-alpha_a_f4;
-lambda_a_f4;
-alpha_p_f4;
-lambda_p_f4;
-
-%HF
-alpha_a_hf;
-lambda_a_hf;
-alpha_p_hf;
-lambda_p_hf;
-alphas_p_hf = [2.2023 2.2077 2.1518];
-alphas_a_hf = [1 1 1];
-
-
-%LF
-alpha_a_lf;
-lambda_a_lf;
-alpha_p_lf;
-lambda_p_lf;
-alphas_p_lf = [2.2487 2.1698 2.1827];
-alphas_a_lf = [1 1 1];
-
 
 
 

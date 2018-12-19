@@ -1,5 +1,7 @@
-%% Alm Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load alm_uclust_25K.mat;
+addpath(genpath('./');
+
+%% David Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+load david.mat;
 c = @cmu.colors;
 
 %% Human A %%%%%%%%%%% 
@@ -297,7 +299,7 @@ end
 
 
 %% Caporaso study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load caporaso_uclust_17K.mat;
+load caporaso.mat;
 
 
 
@@ -614,7 +616,7 @@ end
 
 
 %% Carmody study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load mice_uclust_25K.mat;
+load carmody.mat;
 
 
 %% Set up mice data %%%%%%%%%%%%%%%%%%%%% 
@@ -1296,57 +1298,3 @@ box off
 
 
 
-%% Numbers
-
-%A
-b_lp_A;
-mean(bs_lp_A);
-std(bs_lp_A);
-r_A;
-mean(rs_A);
-std(rs_A);
-
-
-%B
-b_lp_B;
-mean(bs_lp_B);
-std(bs_lp_B);
-r_B;
-mean(rs_B);
-std(rs_B);
-
-
-%M3
-b_lp_m3;
-mean(bs_lp_m3);
-std(bs_lp_m3);
-r_m3;
-mean(rs_m3);
-std(rs_m3);
-
-
-%F4
-b_lp_f4;
-mean(bs_lp_f4);
-std(bs_lp_f4);
-r_f4;
-mean(rs_f4);
-std(rs_f4);
-
-
-%HF
-b_lp_hf;
-mean(bs_lp_hf);
-std(bs_lp_hf);
-r_hf;
-mean(rs_hf);
-std(rs_hf);
-
-
-%LF
-b_lp_lf;
-mean(bs_lp_lf);
-std(bs_lp_lf);
-r_lf;
-mean(rs_lf);
-std(rs_lf);

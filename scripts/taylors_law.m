@@ -1,5 +1,7 @@
-%% Alm Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load alm_uclust_25K.mat;
+addpath(genpath('./');
+
+%% David Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+load david.mat;
 c = @cmu.colors;
 
 %% Human A %%%%%%%%%%% 
@@ -34,6 +36,7 @@ ctax_A = ctax(abd_inds_A);
 otax_A = otax(abd_inds_A);
 ftax_A = ftax(abd_inds_A);
 gtax_A = gtax(abd_inds_A);
+otu_ids_A = otu_ids(abd_inds_A);
 
 proteo_inds_A = find(strcmp('Proteobacteria',ptax_A));
 
@@ -145,6 +148,7 @@ ctax_B = ctax(abd_inds_B);
 otax_B = otax(abd_inds_B);
 ftax_B = ftax(abd_inds_B);
 gtax_B = gtax(abd_inds_B);
+otu_ids_B = otu_ids(abd_inds_B);
 
 proteo_inds_B = find(strcmp('Proteobacteria',ptax_B));
 
@@ -227,7 +231,7 @@ end
 
 
 %% Caporaso study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load caporaso_uclust_17K.mat;
+load caporaso.mat;
 
 
 
@@ -361,7 +365,7 @@ end
 
 
 %% Carmody study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load mice_uclust_25K.mat;
+load carmody.mat;
 
 
 %% Set up mice data %%%%%%%%%%%%%%%%%%%%% 
@@ -640,50 +644,6 @@ set(gca,'FontName','Arial');
 xlabel('Average abundance, <X>');
 title('Mice (LFPP Diet)','FontSize',16,'FontWeight','Normal');
 box off
-
-
-
-
-
-
-%% Numbers
-
-%A
-beta_A;
-betas_A;
-
-%B
-beta_B;
-betas_B;
-
-%M3
-betas_m3;
-betas_m3;
-
-%F4
-coefs_f4;
-betas_f4;
-
-%HF
-beta_hf;
-beta_hf1;
-beta_hf2;
-beta_hf3;
-mean(betas_hf);
-std(betas_hf);
-
-%LF
-beta_lf;
-beta_lf1;
-beta_lf2;
-beta_lf3;
-mean(betas_lf);
-std(betas_lf);
-
-
-
-
-
 
 
 

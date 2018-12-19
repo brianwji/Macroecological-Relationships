@@ -1,5 +1,7 @@
-%% Alm Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load alm_uclust_25K.mat;
+addpath(genpath('./');
+
+%% David Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+load david.mat;
 c = @cmu.colors;
 
 %% Human A %%%%%%%%%%% 
@@ -99,56 +101,6 @@ for i = 1:size(msd_k_A,1)
    h = polyfit(log10(lags_A),log10(msd_k_A(i,:)),1);
    gammas_A(i) = h(1);
 end
-
-
-
-%% Variability of Hurst exponent within human A
-W_A = floor(N_A / 6);
-max_lag_A_W = 15;
-Gammas_A = [];
-
-for j = 1:floor(N_A/W_A)
-    
-    %Set block
-    lags_A_W = 1:max_lag_A_W;
-    msd_W = [];
-    inds = (j-1)*W_A + (1:W_A);
-    data_W = data_A(:,inds);
-    days_W = days_A(inds);
-    
-    %MSD as function of time within each block
-    for i = 1:length(lags_A_W)
-        lag = lags_A_W(i);
-        
-        inds0 = [];
-        inds1 = [];
-        for l = 1:length(days_W)
-            for m = (l+1):length(days_W)
-                d_i = days_W(m)-days_W(l);
-                if d_i == lag
-                    inds0 = [inds0 l];
-                    inds1 = [inds1 m];
-                end
-            end
-        end
-        tX0_i = data_W(:,inds0);
-        tX1_i = data_W(:,inds1);
-        tX0_inds_i = find(tX0_i);
-        tX1_inds_i = find(tX1_i);
-        tdXs_i = tX1_i ./ tX0_i;
-        tdxs_i = log10(tdXs_i);
-        tdx_inds_i = intersect(tX0_inds_i,tX1_inds_i);
-        tdx_i = tdxs_i(tdx_inds_i);
-        msd_W(i) = var(tdx_i);
-    end
-    
-    [H_W,s_W] = polyfit(log10(lags_A_W),log10(msd_W),1);
-    Gammas_A(j) = H_W(1);
-    
-end
-
-
-
 
 
 
@@ -254,53 +206,6 @@ end
 
 
 
-%% Variability of Hurst exponent within human B
-W_B = floor(N_B / 6);
-max_lag_B_W = 15;
-Gammas_B = [];
-
-for j = 1:floor(N_B/W_B)
-    
-    %Set block
-    lags_B_W = 1:max_lag_B_W;
-    msd_W = [];
-    inds = (j-1)*W_B + (1:W_B);
-    data_W = data_B(:,inds);
-    days_W = days_B(inds);
-    
-    %MSD as function of time within each block
-    for i = 1:length(lags_B_W)
-        lag = lags_B_W(i);
-        
-        inds0 = [];
-        inds1 = [];
-        for l = 1:length(days_W)
-            for m = (l+1):length(days_W)
-                d_i = days_W(m)-days_W(l);
-                if d_i == lag
-                    inds0 = [inds0 l];
-                    inds1 = [inds1 m];
-                end
-            end
-        end
-        tX0_i = data_W(:,inds0);
-        tX1_i = data_W(:,inds1);
-        tX0_inds_i = find(tX0_i);
-        tX1_inds_i = find(tX1_i);
-        tdXs_i = tX1_i ./ tX0_i;
-        tdxs_i = log10(tdXs_i);
-        tdx_inds_i = intersect(tX0_inds_i,tX1_inds_i);
-        tdx_i = tdxs_i(tdx_inds_i);
-        msd_W(i) = var(tdx_i);
-    end
-    
-    [H_W,s_W] = polyfit(log10(lags_B_W),log10(msd_W),1);
-    Gammas_B(j) = H_W(1);
-    
-end
-
-
-
 
 
 
@@ -324,7 +229,7 @@ end
 
 
 %% Caporaso study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load caporaso_uclust_17K.mat;
+load caporaso.mat;
 
 
 
@@ -428,54 +333,6 @@ for i = 1:size(msd_k_m3,1)
    h = polyfit(log10(lags_m3),log10(msd_k_m3(i,:)),1);
    gammas_m3(i) = h(1);
 end
-
-
-
-%% Variability of Hurst exponent within human M3
-W_m3 = floor(N_m3 / 6);
-max_lag_m3_W = 15;
-Gammas_m3 = [];
-
-for j = 1:floor(N_m3/W_m3)
-    
-    %Set block
-    lags_m3_W = 1:max_lag_m3_W;
-    msd_W = [];
-    inds = (j-1)*W_m3 + (1:W_m3);
-    data_W = data_m3(:,inds);
-    days_W = days_m3(inds);
-    
-    %MSD as function of time within each block
-    for i = 1:length(lags_m3_W)
-        lag = lags_m3_W(i);
-        
-        inds0 = [];
-        inds1 = [];
-        for l = 1:length(days_W)
-            for m = (l+1):length(days_W)
-                d_i = days_W(m)-days_W(l);
-                if d_i == lag
-                    inds0 = [inds0 l];
-                    inds1 = [inds1 m];
-                end
-            end
-        end
-        tX0_i = data_W(:,inds0);
-        tX1_i = data_W(:,inds1);
-        tX0_inds_i = find(tX0_i);
-        tX1_inds_i = find(tX1_i);
-        tdXs_i = tX1_i ./ tX0_i;
-        tdxs_i = log10(tdXs_i);
-        tdx_inds_i = intersect(tX0_inds_i,tX1_inds_i);
-        tdx_i = tdxs_i(tdx_inds_i);
-        msd_W(i) = var(tdx_i);
-    end
-    
-    [H_W,s_W] = polyfit(log10(lags_m3_W),log10(msd_W),1);
-    Gammas_m3(j) = H_W(1);
-    
-end
-
 
 
 
@@ -587,53 +444,6 @@ end
 
 
 
-%% Variability of Hurst exponent within human F4
-W_f4 = floor(N_f4 / 6);
-max_lag_f4_W = 15;
-Gammas_f4 = [];
-
-for j = 1:floor(N_f4/W_f4)
-    
-    %Set block
-    lags_f4_W = 1:max_lag_f4_W;
-    msd_W = [];
-    inds = (j-1)*W_f4 + (1:W_f4);
-    data_W = data_f4(:,inds);
-    days_W = days_f4(inds);
-    
-    %MSD as function of time within each block
-    for i = 1:length(lags_f4_W)
-        lag = lags_f4_W(i);
-        
-        inds0 = [];
-        inds1 = [];
-        for l = 1:length(days_W)
-            for m = (l+1):length(days_W)
-                d_i = days_W(m)-days_W(l);
-                if d_i == lag
-                    inds0 = [inds0 l];
-                    inds1 = [inds1 m];
-                end
-            end
-        end
-        tX0_i = data_W(:,inds0);
-        tX1_i = data_W(:,inds1);
-        tX0_inds_i = find(tX0_i);
-        tX1_inds_i = find(tX1_i);
-        tdXs_i = tX1_i ./ tX0_i;
-        tdxs_i = log10(tdXs_i);
-        tdx_inds_i = intersect(tX0_inds_i,tX1_inds_i);
-        tdx_i = tdxs_i(tdx_inds_i);
-        msd_W(i) = var(tdx_i);
-    end
-    
-    [H_W,s_W] = polyfit(log10(lags_f4_W),log10(msd_W),1);
-    Gammas_f4(j) = H_W(1);
-    
-end
-
-
-
 
 
 
@@ -652,7 +462,7 @@ end
 
 
 %% Carmody study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-load mice_uclust_25K.mat;
+load carmody.mat;
 
 
 %% Set up mice data %%%%%%%%%%%%%%%%%%%%% 
@@ -1184,93 +994,6 @@ set(gca,'FontName','Arial');
 xlabel('Time, \Delta t (days)');
 title('Mice (LFPP Diet)','FontSize',16,'FontWeight','Normal');
 box off
-
-
-Gammas_hf(1) = Gamma_hf1(1);
-Gammas_hf(2) = Gamma_hf2(1);
-Gammas_hf(3) = Gamma_hf3(1);
-Gammas_lf(1) = Gamma_lf1(1);
-Gammas_lf(2) = Gamma_lf2(1);
-Gammas_lf(3) = Gamma_lf3(1);
-Gamma_hf = Gamma_hf(1);
-Gamma_lf = Gamma_lf(1);
-
-%% Numbers
-
-%A
-H_A = Gamma_A/2; %community average
-ste_Gamma_A = ste_Gamma_A/2;
-Hs_A = Gammas_A/2;
-mean(Hs_A);
-std(Hs_A);
-hs_A = gammas_A/2;
-
-%B
-H_B = Gamma_B/2; %community average
-ste_Gamma_B = ste_Gamma_B/2;
-Hs_B = Gammas_B/2;
-mean(Hs_B);
-std(Hs_B);
-hs_B = gammas_B/2;
-
-%M3
-H_m3 = Gamma_m3/2; %community average
-ste_Gamma_m3 = ste_Gamma_m3/2;
-Hs_m3 = Gammas_m3/2;
-mean(Hs_m3);
-std(Hs_m3);
-hs_m3 = gammas_m3/2;
-
-%F4
-H_f4 = Gamma_f4/2; %community average
-ste_Gamma_f4 = ste_Gamma_f4/2;
-Hs_f4 = Gammas_f4/2;
-mean(Hs_f4);
-std(Hs_f4);
-hs_f4 = gammas_f4/2;
-
-
-%HF
-Hs_hf = Gammas_hf / 2;
-H_hf = Gamma_hf / 2;
-mean(Hs_hf);
-std(Hs_hf);
-H_hf1 = Gamma_hf1 / 2;
-H_hf2 = Gamma_hf2 / 2;
-H_hf3 = Gamma_hf3 / 2;
-
-
-%LF
-Hs_lf = Gammas_lf / 2;
-H_lf = Gamma_lf / 2;
-mean(Hs_lf);
-std(Hs_lf);
-H_lf1 = Gamma_lf1 / 2;
-H_lf2 = Gamma_lf2 / 2;
-H_lf3 = Gamma_lf3 / 2;
-
-
-%% Reported numbers in main text
-
-%Across all humans
-mean([H_A(1) H_B(1) H_m3(1) H_f4(1)]);
-std([H_A(1) H_B(1) H_m3(1) H_f4(1)]);
-
-%Individual humans
-mean(Hs_A);
-std(Hs_A);
-mean(Hs_B);
-std(Hs_B);
-mean(Hs_m3);
-std(Hs_m3);
-mean(Hs_f4);
-std(Hs_f4);
-
-%Across mice
-mean([H_lf1(1) H_lf2(1) H_lf3(1)]);
-std([H_lf1(1) H_lf2(1) H_lf3(1)]);
-mean([H_hf1(1) H_hf2(1) H_hf3(1)]);
-std([H_hf1(1) H_hf2(1) H_hf3(1)]);
 
 
 
