@@ -1,4 +1,4 @@
-addpath(genpath('./');
+addpath(genpath('./'));
 
 %% Carmody study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 load carmody.mat;

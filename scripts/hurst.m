@@ -1,4 +1,4 @@
-addpath(genpath('./');
+addpath(genpath('./'));
 
 %% David Study %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 load david.mat;
